@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 public class TravelPlannerActivity extends Activity {
 
+  public static final int TIME_ACTIVITY_REQUEST_CODE = 2831;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -26,7 +28,15 @@ public class TravelPlannerActivity extends Activity {
 
     Intent intent = new Intent(this, TimeActivity.class);
     intent.putExtra("time", result);
-    startActivity(intent);
+    startActivityForResult(intent, TIME_ACTIVITY_REQUEST_CODE);
   }
 
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if(resultCode == RESULT_OK) {
+      TextView resultView = (TextView) findViewById(R.id.time_with_buffer);
+      resultView.setText("Value with buffer = " + String.valueOf(data.getIntExtra(TimeActivity.TIME_WITH_BUFFER, -1)));
+    }
+  }
 }
