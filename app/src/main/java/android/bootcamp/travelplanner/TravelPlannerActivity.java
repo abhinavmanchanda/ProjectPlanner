@@ -1,6 +1,7 @@
 package android.bootcamp.travelplanner;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +23,10 @@ public class TravelPlannerActivity extends Activity {
     TextView resultView = (TextView) findViewById(R.id.time);
     String resultString = String.valueOf(result);
     resultView.setText(resultString);
+
+    Intent intent = new Intent(this, TimeActivity.class);
+    intent.putExtra("time", result);
+    startActivity(intent);
   }
 
 }
