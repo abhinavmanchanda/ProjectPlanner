@@ -1,14 +1,18 @@
 package android.bootcamp.travelplanner;
 
 import android.app.Activity;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 
 
 public class TravelPlannerActivity extends Activity {
@@ -32,7 +36,20 @@ public class TravelPlannerActivity extends Activity {
 
     Intent intent = new Intent(this, TimeActivity.class);
     intent.putExtra("time", result);
-    startActivityForResult(intent, TIME_ACTIVITY_REQUEST_CODE);
+//    startActivityForResult(intent, TIME_ACTIVITY_REQUEST_CODE);
+
+
+    final TravelPlannerDatabase db = Room.databaseBuilder(getApplicationContext(),
+            TravelPlannerDatabase.class, "travelplanner").allowMainThreadQueries().build();
+
+    
+    db.travelPlanDao().insertAll(new TravelPlan(distance, velocity, result));
+
+    List<TravelPlan> travelPlanList =  db.travelPlanDao().getAll();
+    System.out.println("******************" + travelPlanList.get(0).getDistance());
+    System.out.println("******************" + travelPlanList.get(0).getTime());
+    System.out.println("******************" + travelPlanList.get(0).getVelocity());
+
   }
 
   @Override
