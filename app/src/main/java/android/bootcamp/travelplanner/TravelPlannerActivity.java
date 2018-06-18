@@ -1,8 +1,9 @@
 package android.bootcamp.travelplanner;
 
 import android.app.Activity;
-import android.arch.persistence.room.Room;
+import android.bootcamp.travelplanner.databinding.ActivityTravelPlannerBinding;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -10,8 +11,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.List;
 
 
 public class TravelPlannerActivity extends Activity implements TravelPlannerView {
@@ -24,9 +23,10 @@ public class TravelPlannerActivity extends Activity implements TravelPlannerView
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_travel_planner);
     repository = new TravelPlannerRepository(getApplicationContext());
     presenter = new TravelPlannerPresenter(this, repository);
+    ActivityTravelPlannerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_travel_planner);
+    binding.setPresenter(presenter);
   }
 
   public void calculate(View view) {

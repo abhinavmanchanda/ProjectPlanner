@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+  <data>
+
+    <variable
+        name="presenter"
+        type="android.bootcamp.travelplanner.TravelPlannerPresenter" />
+  </data>
+<LinearLayout
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
@@ -45,7 +52,7 @@
       android:layout_height="50dp"
       android:layout_marginTop="20dp"
       android:text="@string/calculate"
-      android:onClick="calculate"/>
+      android:onClick="@{() -> presenter.calculate(distance.getText().toString(), velocity.getText().toString())}"/>
 
   <Button
       android:id="@+id/capture"
@@ -53,7 +60,7 @@
       android:layout_height="50dp"
       android:layout_marginTop="20dp"
       android:text="Capture"
-      android:onClick="capture"/>
+      android:onClick="@{() -> presenter.capture()}"/>
 
   <Button
       android:id="@+id/save"
@@ -69,4 +76,4 @@
       android:layout_marginTop="20dp"
       android:id="@+id/capturedImage"/>
 </LinearLayout>
-
+</layout>
