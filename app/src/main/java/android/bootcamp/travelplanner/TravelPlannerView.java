@@ -6,5 +6,4 @@ public interface TravelPlannerView {
 
     void launchCamera();
 
-    void displayBuffer(String buffer);
 }

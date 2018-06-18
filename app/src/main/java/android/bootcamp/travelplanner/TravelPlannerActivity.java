@@ -65,10 +65,4 @@ public class TravelPlannerActivity extends Activity implements TravelPlannerView
     startActivityForResult(intent, CAMERA_REQUEST_CODE );
   }
 
-    @Override
-    public void displayBuffer(String buffer) {
-        TextView resultView = findViewById(R.id.time_with_buffer);
-        resultView.setText(buffer);
-
-    }
 }

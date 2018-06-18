@@ -27,7 +27,7 @@ public class TravelPlannerPresenterTest {
         presenter.distance.set("50");
         presenter.velocity.set("10");
         presenter.calculate();
-        assertEquals("5", presenter.time);
+        assertEquals("5", presenter.time.get());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class TravelPlannerPresenterTest {
     @Test
     public void displayBufferOnBeingReturnedFromTimeActivity(){
         presenter.processBufferReturned("30");
-        verify(mockView).displayBuffer("30");
+        assertEquals("30", presenter.timeWithBuffer.get());
     }
 
     @Test
