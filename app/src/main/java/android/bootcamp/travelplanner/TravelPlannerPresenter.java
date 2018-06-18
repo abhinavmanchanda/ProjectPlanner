@@ -20,7 +20,6 @@ public class TravelPlannerPresenter {
     public void calculate(){
         time = String.valueOf(parseInt(distance.get()) / parseInt(velocity.get()));
 
-        view.displayTime(time);
         view.launchTimeActivityWithTimeParameter(time);
     }
 

@@ -52,12 +52,6 @@ public class TravelPlannerActivity extends Activity implements TravelPlannerView
   }
 
   @Override
-  public void displayTime(String time) {
-    TextView resultView = (TextView) findViewById(R.id.time);
-    resultView.setText(time);
-  }
-
-  @Override
   public void launchTimeActivityWithTimeParameter(String time) {
     Intent intent = new Intent(this, TimeActivity.class);
     intent.putExtra("time", time);
