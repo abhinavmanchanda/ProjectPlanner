@@ -19,13 +19,14 @@ public class TravelPlannerActivity extends Activity implements TravelPlannerView
   public static final int CAMERA_REQUEST_CODE = 1105;
   private TravelPlannerPresenter presenter;
   private TravelPlannerRepository repository;
+  private ActivityTravelPlannerBinding binding;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     repository = new TravelPlannerRepository(getApplicationContext());
     presenter = new TravelPlannerPresenter(this, repository);
-    ActivityTravelPlannerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_travel_planner);
+    binding = DataBindingUtil.setContentView(this, R.layout.activity_travel_planner);
     binding.setPresenter(presenter);
   }
 
@@ -44,7 +45,7 @@ public class TravelPlannerActivity extends Activity implements TravelPlannerView
       if(requestCode == TIME_ACTIVITY_REQUEST_CODE){
           presenter.processBufferReturned(data.getStringExtra(TimeActivity.TIME_WITH_BUFFER));
       } else {
-        ImageView imageView = findViewById(R.id.capturedImage);
+        ImageView imageView = binding.capturedImage;
         imageView.setImageBitmap((Bitmap) data.getExtras().get("data"));
 
       }
