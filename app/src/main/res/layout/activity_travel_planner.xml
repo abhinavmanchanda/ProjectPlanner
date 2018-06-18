@@ -38,11 +38,11 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
-      android:text="@={presenter.time}"/>
+      android:text="@{presenter.time}"/>
 
   <TextView
       android:id="@+id/time_with_buffer"
-      android:text="Time With Buffer= "
+      android:text="@{presenter.timeWithBuffer}"
       android:gravity="center_horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
