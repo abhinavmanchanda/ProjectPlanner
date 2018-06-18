@@ -1,24 +1,27 @@
 package android.bootcamp.travelplanner;
 
+import android.databinding.ObservableField;
+
 import static java.lang.Integer.parseInt;
 
 public class TravelPlannerPresenter {
 
     private TravelPlannerView view;
     private TravelPlannerRepository repository;
+    public final ObservableField<String> distance = new ObservableField<>();
+    public final ObservableField<String> velocity = new ObservableField<>();
+    public String time;
 
     public TravelPlannerPresenter(TravelPlannerView view, TravelPlannerRepository repository) {
         this.view = view;
         this.repository = repository;
     }
 
-    public void calculate(String distanceString, String velocityString){
-        int distance = parseInt(distanceString);
-        int velocity = parseInt(velocityString);
-        int time = distance/velocity;
+    public void calculate(){
+        time = String.valueOf(parseInt(distance.get()) / parseInt(velocity.get()));
 
-        view.displayTime(String.valueOf(time));
-        view.launchTimeActivityWithTimeParameter(String.valueOf(time));
+        view.displayTime(time);
+        view.launchTimeActivityWithTimeParameter(time);
     }
 
     public void capture() {

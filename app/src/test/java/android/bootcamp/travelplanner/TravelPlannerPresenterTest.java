@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -24,14 +24,17 @@ public class TravelPlannerPresenterTest {
     }
     @Test
     public void shouldCalculateTimeFromDistanceAndVelocityAndDisplayItOnTheView() {
-        TravelPlannerPresenter presenter =  new TravelPlannerPresenter(mockView, repository);
-        presenter.calculate("50", "10");
-        verify(mockView).displayTime("5");
+        presenter.distance.set("50");
+        presenter.velocity.set("10");
+        presenter.calculate();
+        assertEquals("5", presenter.time);
     }
 
     @Test
     public void shouldCalculateTimeAndSendItToTimeActivity(){
-        presenter.calculate("50", "10");
+        presenter.distance.set("50");
+        presenter.velocity.set("10");
+        presenter.calculate();
         verify(mockView).launchTimeActivityWithTimeParameter("5");
     }
 

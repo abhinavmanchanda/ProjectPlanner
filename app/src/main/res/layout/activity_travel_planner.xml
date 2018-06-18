@@ -21,22 +21,24 @@
       android:gravity="center_horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:inputType="number"/>
+      android:inputType="number"
+      android:text="@={presenter.distance}"/>
   <EditText
       android:id="@+id/velocity"
       android:hint="Speed"
       android:gravity="center_horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:inputType="number"/>
+      android:inputType="number"
+      android:text="@={presenter.velocity}"/>
 
   <TextView
       android:id="@+id/time"
-      android:text="Time Needed = "
       android:gravity="center_horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="10dp"/>
+      android:layout_marginTop="10dp"
+      android:text="@={presenter.time}"/>
 
   <TextView
       android:id="@+id/time_with_buffer"
@@ -52,7 +54,7 @@
       android:layout_height="50dp"
       android:layout_marginTop="20dp"
       android:text="@string/calculate"
-      android:onClick="@{() -> presenter.calculate(distance.getText().toString(), velocity.getText().toString())}"/>
+      android:onClick="@{() -> presenter.calculate()}"/>
 
   <Button
       android:id="@+id/capture"

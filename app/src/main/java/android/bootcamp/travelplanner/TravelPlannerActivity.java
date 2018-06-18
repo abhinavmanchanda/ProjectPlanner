@@ -29,12 +29,6 @@ public class TravelPlannerActivity extends Activity implements TravelPlannerView
     binding.setPresenter(presenter);
   }
 
-  public void calculate(View view) {
-    String distanceString = ((EditText) findViewById(R.id.distance)).getText().toString();
-    String velocityString = ((EditText) findViewById(R.id.velocity)).getText().toString();
-    presenter.calculate(distanceString, velocityString);
-  }
-
   public void save(View view){
     String distance = (((EditText) findViewById(R.id.distance)).getText().toString());
     String velocity = (((EditText) findViewById(R.id.velocity)).getText().toString());
@@ -55,10 +49,6 @@ public class TravelPlannerActivity extends Activity implements TravelPlannerView
 
       }
     }
-  }
-
-  public void capture(View view) {
-    presenter.capture();
   }
 
   @Override
