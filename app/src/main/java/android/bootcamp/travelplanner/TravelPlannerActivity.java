@@ -3,6 +3,7 @@ package android.bootcamp.travelplanner;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,5 +39,10 @@ public class TravelPlannerActivity extends Activity {
       TextView resultView = (TextView) findViewById(R.id.time_with_buffer);
       resultView.setText("Value with buffer = " + String.valueOf(data.getIntExtra(TimeActivity.TIME_WITH_BUFFER, -1)));
     }
+  }
+
+  public void capture(View view) {
+    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    startActivity(intent);
   }
 }
