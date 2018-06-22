@@ -55,6 +55,14 @@
       android:text="Capture"
       android:onClick="capture"/>
 
+  <Button
+      android:id="@+id/save"
+      android:layout_width="200dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="20dp"
+      android:text="Save"
+      android:onClick="save"/>
+
   <ImageView
       android:layout_width="200dp"
       android:layout_height="50dp"
