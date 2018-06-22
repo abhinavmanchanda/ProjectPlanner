@@ -36,8 +36,10 @@ public class DrawableMatcher extends TypeSafeMatcher<View> {
     if (expectedDrawable == null) {
       return false;
     }
+    BitmapDrawable actualDrawable = (BitmapDrawable) imageView.getDrawable();
+    if(actualDrawable == null) return false;
 
-    Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+    Bitmap bitmap = (actualDrawable).getBitmap();
     Bitmap otherBitmap = ((BitmapDrawable) expectedDrawable).getBitmap();
     return bitmap.sameAs(otherBitmap);
   }
